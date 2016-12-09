@@ -3,22 +3,19 @@ var app         = express()
 var Participant = require('../models/participant')
 var router      = express.Router()
 
-router.get('/', function(req,res){
+router.use(function(req, res, next){
+  console.log('%s %s %s', req.method, req.url, res.statusCode.toString())
+  next() // go to next route and not stop here
+})
+
+router.get('/', function(req,res, next){
   res.json({
     'message': 'Welcome to userCloud API',
     'features': 'GET, POST, PUT, DELETE'
   })
 })
 
-router.use(function(req, res, next){
-  // console out
-  console.log('something is happening')
-  next() // go to next route and not stop here
-})
-
 router.route('/participants')
-
-
   // post single participant
   .post(function(req,res){
     var user = new Participant()
@@ -74,8 +71,27 @@ router.route('/participants')
     })
   })
 
+
 // update single participant
 router.route('/participant/:email')
+// get single
+.get(function(req,res){
+  Participant.find({email: req.params.email}, function(err, user){
+    if(err){
+      res.status(204).send('no content')
+    } else {
+      res.format({
+        json: function(){
+          res.status(200).json(user)
+        },
+        html: function(){
+          res.send('single user')
+        }
+      });
+    }
+  })
+})
+
 .put(function(req, res){
   Participant.findOne({email: req.params.email}, function(err, user){
     if(err){
@@ -95,24 +111,6 @@ router.route('/participant/:email')
           }
         })
       })
-    }
-  })
-})
-
-// get single
-.get(function(req,res){
-  Participant.find({email: req.params.email}, function(err, user){
-    if(err){
-      res.send(err)
-    } else {
-      res.format({
-        json: function(){
-          res.json(user)
-        },
-        html: function(){
-          res.send('single user')
-        }
-      });
     }
   })
 })
