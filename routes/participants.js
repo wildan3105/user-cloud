@@ -14,26 +14,39 @@ router.use(function(req, res, next){
 })
 
 router.route('/participants')
+
+
   // post single participant
   .post(function(req,res){
     var user = new Participant()
     user.email    = req.body.email
     user.password = req.body.password
 
-    user.save(function(err){
-      if(err){
-        res.send(err)
-      }
-      else {
-        res.format({
-          json: function(){
-            res.send({
-              "Status":"OK",
-              "Message":"Participant created"
+    Participant.findOne({email: user.email}, function(err, exist){
+      if(exist){
+        console.log('email exist!')
+        res.json({
+          "Status":"Error",
+          "Message":"Email exist!"
+        })
+        return err;
+      } else {
+        user.save(function(err){
+          if(err){
+            res.send(err)
+          }
+          else {
+            res.format({
+              json: function(){
+                res.send({
+                  "Status":"OK",
+                  "Message":"Participant created"
+                })
+              },
+              html: function(){
+                res.send("OK")
+              }
             })
-          },
-          html: function(){
-            res.send("OK")
           }
         })
       }
