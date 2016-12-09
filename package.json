@@ -24,6 +24,8 @@
 	"mongoose":"~3.6.13",
 	"body-parser":"~1.0.1",
 	"jshint":"2.9.4",
-	"method-override":"^2.3.1"
+	"method-override":"^2.3.1",
+  "express-session": "1.11.3",
+  "connect-mongo": "0.8.2"
   }
 }

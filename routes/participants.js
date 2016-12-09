@@ -4,15 +4,30 @@ var Participant = require('../models/participant')
 var router      = express.Router()
 
 router.use(function(req, res, next){
-  console.log('%s %s %s', req.method, req.url, res.statusCode.toString())
+  console.log('%s %s [%s]', req.method, req.url, res.statusCode.toString())
   next() // go to next route and not stop here
 })
+
+function isLoggedIn(req, res, next){
+  if(req.session.username){
+      return next();
+  }
+  res.send('not logged in')
+}
 
 router.get('/', function(req,res, next){
   res.json({
     'message': 'Welcome to userCloud API',
     'features': 'GET, POST, PUT, DELETE'
   })
+})
+
+// test handler
+router.get('/test', function(req,res){
+  if(req.session.username){
+    res.send('testing')
+  }
+  res.send('unauthorized')
 })
 
 router.route('/participants')
