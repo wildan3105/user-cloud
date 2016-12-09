@@ -4,7 +4,10 @@ var Participant = require('../models/participant')
 var router      = express.Router()
 
 router.get('/', function(req,res){
-  res.json({message: 'Welcome to userCloud API'})
+  res.json({
+    'message': 'Welcome to userCloud API',
+    'features': 'GET, POST, PUT, DELETE'
+  })
 })
 
 router.use(function(req, res, next){
