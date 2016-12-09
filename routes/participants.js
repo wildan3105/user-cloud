@@ -79,7 +79,7 @@ router.route('/participant/:email')
 .put(function(req, res){
   Participant.findOne({email: req.params.email}, function(err, user){
     if(err){
-      res.send(err)
+      res.json({'message':'no user found'})
     } else {
       user.email = req.body.email
       user.save(function(err){
@@ -95,6 +95,24 @@ router.route('/participant/:email')
           }
         })
       })
+    }
+  })
+})
+
+// get single
+.get(function(req,res){
+  Participant.find({email: req.params.email}, function(err, user){
+    if(err){
+      res.send(err)
+    } else {
+      res.format({
+        json: function(){
+          res.json(user)
+        },
+        html: function(){
+          res.send('single user')
+        }
+      });
     }
   })
 })
