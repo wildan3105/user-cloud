@@ -9,7 +9,7 @@ var port            = process.env.PORT || 4500;
 var Participant    = require('./models/participant');
 var participants   = require('./routes/participants');
 
-mongoose.connect('mongodb://127.0.0.1:27017/api');
+mongoose.connect('mongodb://127.0.0.1:27017/usercloud');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

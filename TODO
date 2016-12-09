@@ -1,7 +1,10 @@
 - BACKEND
-[] APIs for : 
-	- user registration
-	- user edit
-	- user delete
-	- user get
+[] APIs for :
+	- user registration		[OK]
+	- user edit						[OK]
+	- user delete					[OK]
+	- user get						[OK]
+
+[] VALIDATIONs for :
+	- existing user by email
 - FRONTEND
