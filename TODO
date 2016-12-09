@@ -6,5 +6,9 @@
 	- user get						[OK]
 
 [] VALIDATIONs for :
-	- existing user by email
+	- existing user by email	[OK]
+	-
+
+[] SECURITY
+	- headers?
 - FRONTEND
