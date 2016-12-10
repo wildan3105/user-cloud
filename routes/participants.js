@@ -8,23 +8,16 @@ router.use(function(req, res, next){
   next() // go to next route and not stop here
 })
 
-function isLoggedIn(req, res, next){
-  if(true){
-      return next();
-  }
-  res.send('not logged in')
-}
+// test handler
+router.get('/test', function(req,res){
+  res.send('welcome, testing')
+})
 
 router.get('/', function(req,res, next){
   res.json({
     'message': 'Welcome to userCloud API',
     'features': 'GET, POST, PUT, DELETE'
   })
-})
-
-// test handler
-router.get('/test', function(req,res){
-  res.send('testing')
 })
 
 router.route('/participants')
@@ -84,7 +77,7 @@ router.route('/participants')
   })
 
 
-// update single participant
+
 router.route('/participant/:email')
 // get single
 .get(function(req,res){
@@ -104,6 +97,7 @@ router.route('/participant/:email')
   })
 })
 
+// update single participant
 .put(function(req, res){
   Participant.findOne({email: req.params.email}, function(err, user){
     if(err){

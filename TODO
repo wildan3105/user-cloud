@@ -6,8 +6,8 @@
 	- user get						[OK]
 
 [] VALIDATIONs for :
-	- existing user by email	[OK]
-	- 
+	- existing user by email				[OK]
+	- api login and logout session	[]
 
 [] SECURITY
 	- headers?
