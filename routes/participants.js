@@ -19,7 +19,8 @@ router.use(session({
 
 function isLoggedIn(req,res,next){
   if(!req.session.user){
-    res.send('unauthorized access!')
+    console.log('unauthorized access!')
+    res.send('unauthorized access! please login first')
   } else {
     next();
   }
@@ -36,14 +37,36 @@ router.post('/login', function(req,res){
   if(user === 'wildan' && pass === 'wildan123'){
     req.session.user = user;
     res.send('logged in')
+  } else if (user !== 'wildan' && pass == 'wildan123') {
+    console.log('wrong username')
+    res.send('wrong username')
+  } else if (user === 'wildan' && pass !== 'wildan123') {
+    console.log('wrong password')
+    res.send('wrong password')
+  } else if (user !== 'wildan' && pass !== 'wildan123') {
+    console.log('wrong username and password')
+    res.send('wrong username and password')
   } else {
-    res.send('wrong password or username')
+    console.log('please try again')
+    res.send('please try again')
   }
 })
 
 router.post('/logout', function(req, res){
   delete req.session.user;
+  console.log('logged out successfully')
   res.send('logged out');
+})
+
+// router to check session
+router.get('/check_session', function(req,res){
+  if (req.session.user = 'undefined'){
+    console.log('please login')
+    res.send('please login')
+  } else if(req.session.user == 'wildan') {
+    console.log('your session is ', req.session.user)
+    res.send('your session is ', req.session.user)
+  }
 })
 
 router.use(function(req, res, next){
@@ -57,7 +80,7 @@ router.get('/', function(req,res, next){
     'features': 'GET, POST, PUT, DELETE'
   })
 })
-
+router.use(isLoggedIn)
 router.route('/participants')
   // post single participant
   .post(function(req,res){
