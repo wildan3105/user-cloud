@@ -1,16 +1,54 @@
-var express     = require('express')
-var app         = express()
+var express         = require('express')
+var app             = express()
+var session       	= require('express-session');
+var MongoStore    = require('connect-mongo')(session);
+var cookieParser    = require('cookie-parser');
+app.use(cookieParser());
+// models
 var Participant = require('../models/participant')
 var router      = express.Router()
+
+router.use(session({
+  secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
+  proxy: true,
+  resave: true,
+  saveUninitialized: true,
+  store: new MongoStore({ url: 'mongodb://localhost:27017/usercloud'})
+  })
+);
+
+function isLoggedIn(req,res,next){
+  if(!req.session.user){
+    res.send('unauthorized access!')
+  } else {
+    next();
+  }
+}
+
+// test handler
+router.get('/test', isLoggedIn, function(req,res){
+  res.send('testing')
+})
+
+router.post('/login', function(req,res){
+  var user = req.body.username;
+  var pass = req.body.password
+  if(user === 'wildan' && pass === 'wildan123'){
+    req.session.user = user;
+    res.send('logged in')
+  } else {
+    res.send('wrong password or username')
+  }
+})
+
+router.post('/logout', function(req, res){
+  delete req.session.user;
+  res.send('logged out');
+})
 
 router.use(function(req, res, next){
   console.log('%s %s [%s]', req.method, req.url, res.statusCode.toString())
   next() // go to next route and not stop here
-})
-
-// test handler
-router.get('/test', function(req,res){
-  res.send('welcome, testing')
 })
 
 router.get('/', function(req,res, next){
