@@ -9,7 +9,7 @@ router.use(function(req, res, next){
 })
 
 function isLoggedIn(req, res, next){
-  if(req.session.username){
+  if(true){
       return next();
   }
   res.send('not logged in')
@@ -24,10 +24,7 @@ router.get('/', function(req,res, next){
 
 // test handler
 router.get('/test', function(req,res){
-  if(req.session.username){
-    res.send('testing')
-  }
-  res.send('unauthorized')
+  res.send('testing')
 })
 
 router.route('/participants')
