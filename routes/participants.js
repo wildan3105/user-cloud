@@ -80,7 +80,9 @@ router.get('/', function(req,res, next){
     'features': 'GET, POST, PUT, DELETE'
   })
 })
+
 router.use(isLoggedIn)
+
 router.route('/participants')
   // post single participant
   .post(function(req,res){
