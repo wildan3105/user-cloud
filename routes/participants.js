@@ -9,6 +9,9 @@ app.use(cookieParser());
 var Participant     = require('../models/participant')
 var router          = express.Router()
 
+// modules
+var user           = require('../modules/user')
+
 router.use(session({
   secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
   proxy: true,
@@ -86,20 +89,11 @@ router.get('/', function(req,res, next){
 })
 
 // list of functions
-var findUserByEmail = function(req,res){
-  var params = req.params;
-  Participant.findOne({email: params.email}, function(e,s){
-    if(s){
-      res.send(s)
-    } else {
-      res.send('not found')
-    }
-  })
-}
-
-router.get('/parts/:userEmail', findUserByEmail)
 
 router.use(isLoggedIn)
+router.get('/participants', user.findAll)
+router.get('/participant/:email', user.findUserByEmail)
+router.delete('/participant/:email', user.deleteByEmail)
 
 router.route('/participants')
   // post single participant
@@ -139,45 +133,7 @@ router.route('/participants')
     })
   })
 
-  // get all participants
-  .get(function(req,res){
-    Participant.find(function(err, users){
-      if(err){
-        res.send(err)
-      } else {
-        res.format({
-          json: function(){
-            res.json(users)
-          },
-          html: function(){
-            res.send('showing all users')
-          }
-        });
-      }
-    })
-  })
-
-
-
 router.route('/participant/:email')
-// get single
-.get(function(req,res){
-  Participant.findUserByEmail({email: req.params.email}, function(err, user){
-    if(err){
-      res.status(204).send('no content')
-    } else {
-      res.format({
-        json: function(){
-          res.status(200).json(user)
-        },
-        html: function(){
-          res.send('single user')
-        }
-      });
-    }
-  })
-})
-
 // update single participant
 .put(function(req, res){
   Participant.findOne({email: req.params.email}, function(err, user){
@@ -201,27 +157,5 @@ router.route('/participant/:email')
     }
   })
 })
-
-// delete single participant
-router.route('/participant?')
-.delete(function(req,res){
-  Participant.remove({
-      email: req.query.email
-      },
-      function(err, temp){
-        if(err){
-          res.send("error")
-        }
-        res.format({
-          json: function(){
-            res.send({message: 'Participant deleted : '})
-          },
-          html: function(){
-            res.send('deleted')
-          }
-        })
-      }
-    )
-  })
 
 module.exports = router;
