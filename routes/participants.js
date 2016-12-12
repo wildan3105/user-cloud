@@ -1,4 +1,5 @@
-var express         = require('express')
+
+gvar express         = require('express')
 var app             = express()
 var session       	= require('express-session');
 var MongoStore      = require('connect-mongo')(session);
