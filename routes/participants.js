@@ -85,6 +85,20 @@ router.get('/', function(req,res, next){
   })
 })
 
+// list of functions
+var findUserByEmail = function(req,res){
+  var params = req.params;
+  Participant.findOne({email: params.email}, function(e,s){
+    if(s){
+      res.send(s)
+    } else {
+      res.send('not found')
+    }
+  })
+}
+
+router.get('/parts/:userEmail', findUserByEmail)
+
 router.use(isLoggedIn)
 
 router.route('/participants')
@@ -148,7 +162,7 @@ router.route('/participants')
 router.route('/participant/:email')
 // get single
 .get(function(req,res){
-  Participant.find({email: req.params.email}, function(err, user){
+  Participant.findUserByEmail({email: req.params.email}, function(err, user){
     if(err){
       res.status(204).send('no content')
     } else {
