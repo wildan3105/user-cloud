@@ -59,7 +59,7 @@ router.get('/participants', user.findAll)
 
 router.post('/participant', user.createUser)
 router.get('/participant/:email', user.findUserByEmail)
-router.delete('/participant/:email', user.deleteByEmail)
+router.delete('/participant/:email', user.deleteUserByEmail)
 router.put('/participant/:email', user.updateUserByEmail)
 
 module.exports = router;

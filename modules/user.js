@@ -91,7 +91,7 @@ exports.findUserByEmail = function(req,res){
     if(s){
       res.send(s)
     } else {
-      res.send('not found')
+      res.send('user not found')
     }
   })
 }
@@ -106,7 +106,7 @@ exports.findAll = function(req,res){
   })
 }
 
-exports.deleteByEmail = function(req,res){
+exports.deleteUserByEmail = function(req,res){
   var params = req.params.email;
   Participant.remove({email:params}, function(e,s){
     if(s){
