@@ -28,6 +28,32 @@ router.use(session({
   })
 );
 
+// middleware to use in all routes
+router.use(function(req, res, next){
+  console.log('%s %s [%s]', req.method, req.url, res.statusCode.toString())
+  next() // go to next route and not stop here
+})
+
+// error handling
+router.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+
+// testing
+var requestTime = function(req, res, next){
+  req.requestTime = new Date()
+  next()
+}
+
+router.get('/testing', requestTime, function(req,res){
+  var responseText = 'Hello world';
+  let times = new Date()
+  responseText += 'requested at ' + req.requestTime
+  console.log(times)
+  res.send(responseText)
+})
+
 // middleware
 var auth = require('../middleware/auth')
 
@@ -39,11 +65,6 @@ function isLoggedIn(req,res,next){
     next();
   }
 }
-
-router.use(function(req, res, next){
-  console.log('%s %s [%s]', req.method, req.url, res.statusCode.toString())
-  next() // go to next route and not stop here
-})
 
 router.get('/', function(req,res, next){
   res.json({
