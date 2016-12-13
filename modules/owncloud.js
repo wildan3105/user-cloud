@@ -20,3 +20,15 @@ exports.getAllUsers = function(req,res){
   var fullUrl = preUrl+credents+endUrl+'users'
   res.redirect(fullUrl)
 }
+
+exports.getSingleUser = function(req,res){
+  var params = req.params.user;
+  var fullUrl = preUrl+credents+endUrl+'users/'+params
+  res.redirect(fullUrl)
+}
+
+exports.getGroup = function(req,res){
+  var params = req.params.user;
+  var fullUrl = preUrl+credents+endUrl+'users/'+params+'/groups'
+  res.redirect(fullUrl)
+}
