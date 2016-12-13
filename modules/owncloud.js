@@ -1,10 +1,11 @@
-var express         = require('express')
-var app             = express()
-var session       	= require('express-session');
-var MongoStore      = require('connect-mongo')(session);
-var mongoose        = require('mongoose');
-var cookieParser    = require('cookie-parser');
-var request         = require('request');
+var express           = require('express'),
+    app               = express(),
+    mongoose          = require('mongoose'),
+    cookieParser      = require('cookie-parser'),
+    request           = require('request'),
+    session       	  = require('express-session'),
+    MongoStore        = require('connect-mongo')(session);
+
 app.use(cookieParser());
 
 var credentials = require('../credentials/auth.json')
