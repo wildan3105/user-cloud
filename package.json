@@ -4,7 +4,7 @@
   "description": "Simple user management website that syncs! with ownCloud",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/jshint/bin/jshint index.js"
+    "test": "./node_modules/jshint/bin/jshint app.js"
   },
   "repository": {
     "type": "git",
@@ -18,17 +18,19 @@
   "bugs": {
     "url": "https://github.com/wldn/userCloud/issues"
   },
-  "homepage": "https://github.com/wldn/userCloud#readme",
-  "dependencies":{
-	"express":"4.14.0",
-	"mongoose":"~3.6.13",
-	"body-parser":"~1.0.1",
-	"cookie-parser":"1.4.3",
-	"jshint":"2.9.4",
-	"method-override":"^2.3.1",
-  "express-session": "1.11.3",
-  "connect-mongo": "0.8.2",
-	"pm2":"2.1.6",
-  "request":"2.79.0"
+    "homepage": "https://github.com/wldn/userCloud#readme",
+    "dependencies":{
+  	"express":"4.14.0",
+  	"mongoose":"~3.6.13",
+  	"body-parser":"~1.0.1",
+  	"cookie-parser":"1.4.3",
+  	"jshint":"2.9.4",
+  	"method-override":"^2.3.1",
+    "express-session": "1.11.3",
+    "connect-mongo": "0.8.2",
+  	"pm2":"2.1.6",
+    "request":"2.79.0",
+    "helmet":"3.1.0",
+    "nsp":"2.6.2"
   }
 }

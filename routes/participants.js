@@ -3,7 +3,9 @@ var app                 = express()
 var session       	    = require('express-session');
 var MongoStore          = require('connect-mongo')(session);
 var cookieParser        = require('cookie-parser');
+
 app.use(cookieParser());
+app.disable('x-powered-by')
 
 // models
 var Participant         = require('../models/participant')
@@ -28,6 +30,9 @@ router.use(session({
   })
 );
 
+// set header
+
+
 // middleware to use in all routes
 router.use(function(req, res, next){
   console.log('%s %s [%s]', req.method, req.url, res.statusCode.toString())
@@ -47,11 +52,14 @@ var requestTime = function(req, res, next){
 }
 
 router.get('/testing', requestTime, function(req,res){
+  res.set({
+    'Authorization':'wildan123'
+  })
   var responseText = 'Hello world';
   let times = new Date()
   responseText += 'requested at ' + req.requestTime
   console.log(times)
-  res.send(responseText)
+  res.sendStatus(403)
 })
 
 // middleware

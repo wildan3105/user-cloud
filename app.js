@@ -1,5 +1,5 @@
-var express = require('express')
-var app = express()
+var express = require('express');
+var app = express();
 var bodyParser      		= require('body-parser');
 var cookieParser    		= require('cookie-parser');
 var mongoose        		= require('mongoose');
@@ -8,12 +8,13 @@ var http            		= require('http');
 var port            		= process.env.PORT || 4500;
 var session							= require('express-session');
 var MongoStore    			= require('connect-mongo')(session);
-
+var helmet							= require('helmet');
 var Participant    = require('./models/participant');
 var participants   = require('./routes/participants');
 
 mongoose.connect('mongodb://127.0.0.1:27017/usercloud');
 
+app.use(helmet());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -22,8 +23,8 @@ app.set('views', './views');
 app.use('/api', participants);
 
 app.get('/', function(req,res){
-	res.send('user cloud homepage')
-})
+	res.send('user cloud homepage');
+});
 
 app.listen(port);
 console.log('Server running at ', port);
