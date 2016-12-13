@@ -57,8 +57,8 @@ exports.Test = function(req,res){
 }
 
 exports.addUser = function(req,res){
-  // var user = req.body.username;
-  // var pass = req.body.password;
+  var user = req.body.username;
+  var pass = req.body.password;
   var full = full+'users'
   var formData = {
     userid: 'abc',
