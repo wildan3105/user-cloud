@@ -66,13 +66,25 @@ router.get('/testing', requestTime, function(req,res){
 var auth = require('../middleware/auth')
 
 function isLoggedIn(req,res,next){
-  if(!req.session.user){
-    console.log('unauthorized access!')
-    res.send('unauthorized access! please login first')
-  } else {
-    next();
+    if(!req.session.user){
+      console.log('unauthorized access!')
+      res.send('unauthorized access! please login first')
+    } else {
+      next();
+    }
   }
-}
+
+// type of session
+// function isLoggedIn(type){
+//   return function(req, res, next){
+//     if (!req.user || req.user.type != type){
+//       return next(new Error ('Unauthorized'));
+//     }
+//     next();
+//   }
+// }
+//
+// router.get('/admin', isLoggedIn('admin'), adminController)
 
 router.get('/', function(req,res, next){
   res.json({

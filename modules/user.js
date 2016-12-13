@@ -91,7 +91,7 @@ exports.findUserByEmail = function(req,res){
     if(s){
       res.send(s)
     } else {
-      res.send('user not found')
+      res.sendStatus(404)
     }
   })
 }
