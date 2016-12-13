@@ -19,31 +19,31 @@ var credents = credentials.username+':'+credentials.password;
 var full = preUrl+credents+endUrl;
 
 exports.getAllUsers = function(req,res){
-  var fullUrl = preUrl+credents+endUrl+'users'
+  let fullUrl = full+'users'
   res.redirect(fullUrl)
 }
 
 exports.getSingleUser = function(req,res){
-  var params = req.params.user;
-  var fullUrl = preUrl+credents+endUrl+'users/'+params
+  let params = req.params.user;
+  let fullUrl = full+'users/'+params
   res.redirect(fullUrl)
 }
 
 exports.getGroup = function(req,res){
-  var params = req.params.user;
-  var fullUrl = preUrl+credents+endUrl+'users/'+params+'/groups'
+  let params = req.params.user;
+  let fullUrl = full+'users/'+params+'/groups'
   res.redirect(fullUrl)
 }
 
 exports.getSubadmin = function(req,res){
-  var params = req.params.user;
-  var fullUrl = preUrl+credents+endUrl+'users/'+params+'/subadmins'
+  let params = req.params.user;
+  let fullUrl = full+'users/'+params+'/subadmins'
   res.redirect(fullUrl)
 }
 
 exports.getGroupMember = function(req,res){
-  var params = req.params.group
-  var fullUrl = preUrl+credents+endUrl+'groups/'+params
+  let params = req.params.group
+  let fullUrl = full+'groups/'+params
   res.redirect(fullUrl)
 }
 
@@ -59,10 +59,10 @@ exports.addUser = function(req,res){
   // var user = req.body.username;
   // var pass = req.body.password;
   var full = full+'users'
-  // var formData = {
-  //   userid: user,
-  //   password: pass
-  // }
+  var formData = {
+    userid: 'abc',
+    password: 'abc123'
+  }
   request({url: full, form: {userid:'abc', password:'wildan123'}}, function(err, response, body){
     if(!err && response.statusCode == 200){
       res.send(body)
