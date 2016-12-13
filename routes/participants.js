@@ -1,16 +1,16 @@
-var express         = require('express')
-var app             = express()
-var session       	= require('express-session');
-var MongoStore      = require('connect-mongo')(session);
-var cookieParser    = require('cookie-parser');
+var express             = require('express')
+var app                 = express()
+var session       	    = require('express-session');
+var MongoStore          = require('connect-mongo')(session);
+var cookieParser        = require('cookie-parser');
 app.use(cookieParser());
 
 // models
-var Participant     = require('../models/participant')
-var router          = express.Router()
+var Participant         = require('../models/participant')
+var router              = express.Router()
 
 // modules
-var user           = require('../modules/user')
+var user                = require('../modules/user')
 
 router.use(session({
   secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
