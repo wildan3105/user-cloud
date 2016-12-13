@@ -11,6 +11,13 @@ var router              = express.Router()
 
 // modules
 var user                = require('../modules/user')
+var owncloud            = require('../modules/owncloud')
+
+// owncloud
+var preUrl = 'http://',
+    endUrl = '@eureka.fi.itb.ac.id/ocs/v1.php/cloud/';
+var credentials = require('../credentials/auth.json')
+var credents = credentials.username+':'+credentials.password
 
 router.use(session({
   secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
@@ -61,5 +68,8 @@ router.post('/participant', user.createUser)
 router.get('/participant/:email', user.findUserByEmail)
 router.delete('/participant/:email', user.deleteUserByEmail)
 router.put('/participant/:email', user.updateUserByEmail)
+
+// owncloud
+router.get('/owncloud/users', owncloud.getAllUsers)
 
 module.exports = router;
