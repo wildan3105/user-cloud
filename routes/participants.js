@@ -76,4 +76,7 @@ router.get('/owncloud/users/:user/groups', owncloud.getGroup)
 router.get('/owncloud/users/:user/subadmins', owncloud.getSubadmin)
 router.get('/owncloud/groups/:group', owncloud.getGroupMember)
 
+router.get('/owncloud/test', owncloud.Test)
+router.post('/owncloud/users', owncloud.addUser)
+
 module.exports = router;

@@ -26,8 +26,9 @@
 	"cookie-parser":"1.4.3",
 	"jshint":"2.9.4",
 	"method-override":"^2.3.1",
-  	"express-session": "1.11.3",
-  	"connect-mongo": "0.8.2",
-	"pm2":"2.1.6"
+  "express-session": "1.11.3",
+  "connect-mongo": "0.8.2",
+	"pm2":"2.1.6",
+  "request":"2.79.0"
   }
 }
