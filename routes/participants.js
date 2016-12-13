@@ -52,14 +52,10 @@ router.get('/', function(req,res, next){
   })
 })
 
-// test handler
-router.get('/test', isLoggedIn, function(req,res){
-  res.send('testing')
-})
-
 router.post('/login', user.loginAdmin)
 router.post('/logout', user.logoutAdmin)
 
+// check session for all routes below
 router.use(isLoggedIn)
 
 router.get('/participants', user.findAll)
