@@ -32,3 +32,15 @@ exports.getGroup = function(req,res){
   var fullUrl = preUrl+credents+endUrl+'users/'+params+'/groups'
   res.redirect(fullUrl)
 }
+
+exports.getSubadmin = function(req,res){
+  var params = req.params.user;
+  var fullUrl = preUrl+credents+endUrl+'users/'+params+'/subadmins'
+  res.redirect(fullUrl)
+}
+
+exports.getGroupMember = function(req,res){
+  var params = req.params.group
+  var fullUrl = preUrl+credents+endUrl+'groups/'+params
+  res.redirect(fullUrl)
+}

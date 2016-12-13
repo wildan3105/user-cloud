@@ -73,5 +73,7 @@ router.put('/participant/:email', user.updateUserByEmail)
 router.get('/owncloud/users', owncloud.getAllUsers)
 router.get('/owncloud/users/:user', owncloud.getSingleUser)
 router.get('/owncloud/users/:user/groups', owncloud.getGroup)
+router.get('/owncloud/users/:user/subadmins', owncloud.getSubadmin)
+router.get('/owncloud/groups/:group', owncloud.getGroupMember)
 
 module.exports = router;
