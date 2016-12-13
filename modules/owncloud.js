@@ -61,8 +61,8 @@ exports.addUser = function(req,res){
   var pass = req.body.password;
   var full = full+'users'
   var formData = {
-    userid: 'abc',
-    password: 'abc123'
+    userid: user,
+    password: pass
   }
   request({url: full, form: {userid:'abc', password:'wildan123'}}, function(err, response, body){
     if(!err && response.statusCode == 200){
