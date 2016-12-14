@@ -1,9 +1,9 @@
 - BACKEND
 [] APIs for :
-	- user registration		[OK]
-	- user edit						[OK]
-	- user delete					[OK]
-	- user get						[OK]
+	- user registration							[OK]
+	- user edit											[OK]
+	- user delete										[OK]
+	- user get											[OK]
 
 [] VALIDATIONs for :
 	- existing user by email				[OK]
@@ -15,4 +15,29 @@
 - FRONTEND
 
 - OWNCLOUD list api
-	[] users
+	# user
+		[] users/adduser							{POST}
+		[] users/getusers (multiple)	{GET}
+		[] users/getuser (single)			{GET}
+		[] users/edituser							{PUT}
+		[] users/deleteuser						{DELETE}
+		[] users/getgroups						{GET}
+		[] users/addtogroup						{POST}
+		[] users/removefromgroup			{DELETE}
+		[] users/createsubadmin				{POST}
+		[] users/removesubadmin				{DELETE}
+		[] users/getsubadmingroups		{GET}
+
+	# group
+		[] groups/getgroups						{GET}
+		[] groups/addgroup						{POST}
+		[] groups/getgroup 						{GET}
+		[] groups/getsubadmins				{GET}
+		[] groups/deletegroup					{DELETE}
+
+	// optional
+	# apps
+		[] apps/getapps								{GET}
+		[] apps/getappinfo						{GET}
+		[] apps/enable								{POST}
+		[] apps/disable								{DELETE}
