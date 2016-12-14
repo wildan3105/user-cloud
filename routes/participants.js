@@ -3,7 +3,10 @@ var app                 = express()
 var session       	    = require('express-session');
 var MongoStore          = require('connect-mongo')(session);
 var cookieParser        = require('cookie-parser');
+var bodyParser          = require('body-parser')
 
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.disable('x-powered-by')
 
@@ -111,11 +114,13 @@ router.get('/owncloud/users', owncloud.getAllUsers)
 router.get('/owncloud/users/:user', owncloud.getSingleUser)
 router.delete('/owncloud/users/:user', owncloud.deleteUser)
 router.get('/owncloud/users/:user/groups', owncloud.getGroup)
+//router.delete('/owncloud/users/:user/groups', owncloud.deleteFromGroup)
+router.delete('/owncloud/groups/:group', owncloud.deleteGroup)
 router.get('/owncloud/users/:user/subadmins', owncloud.getSubadmin)
 router.get('/owncloud/groups', owncloud.getAllGroups)
 router.get('/owncloud/groups/:group', owncloud.getGroupMember)
 
 router.get('/owncloud/test', owncloud.Test)
-router.post('/owncloud/users', owncloud.addUser)
+// router.use('/owncloud/users', owncloud.addUser), still buggy
 
 module.exports = router;

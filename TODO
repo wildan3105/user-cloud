@@ -20,7 +20,7 @@
 		[-] users/getusers (multiple)	{GET}
 		[-] users/getuser (single)		{GET}
 		[] users/edituser							{PUT}
-		[] users/deleteuser						{DELETE}
+		[-] users/deleteuser					{DELETE}
 		[-] users/getgroups						{GET}
 		[] users/addtogroup						{POST}
 		[] users/removefromgroup			{DELETE}
@@ -33,7 +33,7 @@
 		[] groups/addgroup						{POST}
 		[-] groups/getgroup 					{GET}
 		[-] groups/getsubadmins				{GET}
-		[] groups/deletegroup					{DELETE}
+		[-] groups/deletegroup				{DELETE}
 
 	// optional
 	# apps

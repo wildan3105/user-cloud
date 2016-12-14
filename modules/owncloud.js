@@ -5,7 +5,11 @@ var express           = require('express'),
     request           = require('request'),
     session       	  = require('express-session'),
     MongoStore        = require('connect-mongo')(session);
+var cookieParser        = require('cookie-parser');
+var bodyParser          = require('body-parser')
 
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 var credentials = require('../credentials/auth.json')
@@ -45,9 +49,25 @@ exports.deleteUser = function(req, res){
   res.redirect(fullUrl)
 }
 
+exports.deleteFromGroup = function(req, res){
+  let params1 = req.params.user
+  let params2 = req.body.groupid
+  /*
+    not working, specify groupid into req.body then request({})
+  */
+  let fullUrl = full+'users/'+params1+'/groups'
+  res.redirect(fullUrl)
+}
+
 exports.getGroup = function(req,res){
-  let params = req.params.user;
+  let params = req.params.user
   let fullUrl = full+'users/'+params+'/groups'
+  res.redirect(fullUrl)
+}
+
+exports.deleteGroup = function(req, res){
+  let params = req.params.group
+  let fullUrl = full+'groups/'+params
   res.redirect(fullUrl)
 }
 
@@ -74,16 +94,17 @@ exports.getGroupMember = function(req,res){
 }
 
 exports.addUser = function(req,res){
-  var user = req.body.username;
-  var pass = req.body.password;
-  var full = full+'users'
-  var formData = {
-    userid: user,
-    password: pass
+  let userid    = req.body.userid
+  let password  = req.body.password
+  let fullUrl   = full+'users'
+  let formData = {
+    userid: userid,
+    password: password
   }
-  request({url: full, form: {userid:'abc', password:'wildan123'}}, function(err, response, body){
+  request.post({url: fullUrl, formData:formData}, function(err, response, body){
     if(!err && response.statusCode == 200){
-      res.send(body)
+      res.redirect(fullUrl)
     }
+    res.send(err)
   })
 }
