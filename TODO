@@ -17,22 +17,22 @@
 - OWNCLOUD list api
 	# user
 		[] users/adduser							{POST}
-		[] users/getusers (multiple)	{GET}
-		[] users/getuser (single)			{GET}
+		[-] users/getusers (multiple)	{GET}
+		[-] users/getuser (single)		{GET}
 		[] users/edituser							{PUT}
 		[] users/deleteuser						{DELETE}
-		[] users/getgroups						{GET}
+		[-] users/getgroups						{GET}
 		[] users/addtogroup						{POST}
 		[] users/removefromgroup			{DELETE}
 		[] users/createsubadmin				{POST}
 		[] users/removesubadmin				{DELETE}
-		[] users/getsubadmingroups		{GET}
+		[-] users/getsubadmingroups		{GET}
 
 	# group
-		[] groups/getgroups						{GET}
+		[-] groups/getgroups					{GET}
 		[] groups/addgroup						{POST}
-		[] groups/getgroup 						{GET}
-		[] groups/getsubadmins				{GET}
+		[-] groups/getgroup 					{GET}
+		[-] groups/getsubadmins				{GET}
 		[] groups/deletegroup					{DELETE}
 
 	// optional

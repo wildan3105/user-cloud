@@ -19,6 +19,15 @@ var credentials = require('../credentials/auth.json');
 var credents = credentials.username+':'+credentials.password;
 var full = preUrl+credents+endUrl;
 
+// test using 'request' module
+exports.Test = function(req,res){
+  request('http://localhost:4500/api', function(err, response, body){
+    if(!err && response.statusCode == 200){
+      res.send(body)
+    }
+  })
+}
+
 exports.getAllUsers = function(req,res){
   let fullUrl = full+'users'
   res.redirect(fullUrl)
@@ -26,6 +35,12 @@ exports.getAllUsers = function(req,res){
 
 exports.getSingleUser = function(req,res){
   let params = req.params.user;
+  let fullUrl = full+'users/'+params
+  res.redirect(fullUrl)
+}
+
+exports.deleteUser = function(req, res){
+  let params = req.params.user
   let fullUrl = full+'users/'+params
   res.redirect(fullUrl)
 }
@@ -42,18 +57,20 @@ exports.getSubadmin = function(req,res){
   res.redirect(fullUrl)
 }
 
+exports.getAllGroups = function(req, res){
+  /*
+    @param : ?search= string
+    @param : ?limit= int
+    @param : ?offset= int
+  */
+  let fullUrl = full+'groups';
+  res.redirect(fullUrl)
+}
+
 exports.getGroupMember = function(req,res){
   let params = req.params.group
   let fullUrl = full+'groups/'+params
   res.redirect(fullUrl)
-}
-
-exports.Test = function(req,res){
-  request('http://localhost:4500/api', function(err, response, body){
-    if(!err && response.statusCode == 200){
-      res.send(body)
-    }
-  })
 }
 
 exports.addUser = function(req,res){

@@ -109,8 +109,10 @@ router.put('/participant/:email', user.updateUserByEmail)
 // owncloud
 router.get('/owncloud/users', owncloud.getAllUsers)
 router.get('/owncloud/users/:user', owncloud.getSingleUser)
+router.delete('/owncloud/users/:user', owncloud.deleteUser)
 router.get('/owncloud/users/:user/groups', owncloud.getGroup)
 router.get('/owncloud/users/:user/subadmins', owncloud.getSubadmin)
+router.get('/owncloud/groups', owncloud.getAllGroups)
 router.get('/owncloud/groups/:group', owncloud.getGroupMember)
 
 router.get('/owncloud/test', owncloud.Test)
