@@ -30,7 +30,7 @@
 
 	# group
 		[-] groups/getgroups					{GET}
-		[] groups/addgroup						{POST}
+		[-] groups/addgroup						{POST}
 		[-] groups/getgroup 					{GET}
 		[-] groups/getsubadmins				{GET}
 		[-] groups/deletegroup				{DELETE}

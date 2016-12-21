@@ -117,3 +117,12 @@ exports.addGroup = function(req, res){
   if (!req.body) return res.sendStatus(404)
   res.redirect(307, fullUrl+'?groupid='+req.body.groupid)
 }
+
+exports.updateUser = function(req, res){
+  /*
+    @param : email, quota, display, password
+  */
+  let params  = req.params.user
+  let fullUrl = full+'users/'+params
+  res.redirect(307, fullUrl+'?key='+req.body.key+'&value='+req.body.new_email)
+}
