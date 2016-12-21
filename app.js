@@ -9,8 +9,9 @@ var port            		= process.env.PORT || 4500;
 var session							= require('express-session');
 var MongoStore    			= require('connect-mongo')(session);
 var helmet							= require('helmet');
-var Participant    = require('./models/participant');
-var participants   = require('./routes/participants');
+var Participant    			= require('./models/participant');
+var participants   			= require('./routes/participants');
+var main								= require('./routes/main');
 
 mongoose.connect('mongodb://127.0.0.1:27017/usercloud');
 
@@ -21,10 +22,7 @@ app.use(cookieParser());
 app.use(methodOverride('_method'));
 app.set('views', './views');
 app.use('/api', participants);
-
-app.get('/', function(req,res){
-	res.send('user cloud homepage');
-});
+app.use('/', main);
 
 app.listen(port);
 console.log('Server running at ', port);
