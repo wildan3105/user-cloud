@@ -54,7 +54,7 @@ exports.createUser = function(req,res){
           res.send(err)
         }
         else {
-          res.send('User created')
+          res.redirect('../../')
         }
       })
     }
