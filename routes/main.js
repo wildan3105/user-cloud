@@ -15,4 +15,8 @@ router.get('/', function(req, res){
   res.send('welcome to main page')
 })
 
+router.get('/register', function(req, res){
+  res.render('user/register');
+})
+
 module.exports = router;

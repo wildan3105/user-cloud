@@ -13,6 +13,8 @@ var Participant    			= require('./models/participant');
 var participants   			= require('./routes/participants');
 var main								= require('./routes/main');
 var admin								= require('./routes/admin');
+var cons								= require('consolidate');
+var path								= require('path')
 
 mongoose.connect('mongodb://127.0.0.1:27017/usercloud');
 
@@ -21,7 +23,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(methodOverride('_method'));
-app.set('views', './views');
+app.engine('html', cons.swig)
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html')
 app.use('/api', participants);
 app.use('/', main);
 app.use('/admin', admin);
