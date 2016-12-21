@@ -114,7 +114,15 @@ exports.updateUser = function(req, res){
   */
   let params  = req.params.user
   let fullUrl = full+'users/'+params
-  res.redirect(307, fullUrl+'?key='+req.body.key+'&value='+req.body.new_email)
+  var keyname = req.body.key
+  switch (keyname) {
+    case 'email': console.log('email')
+      break;
+    case 'quota': console.log('quota')
+      break;
+    default: console.log('default')
+  }
+  res.redirect(307, fullUrl+'?key='+req.body.key+'&value='+req.body.value)
 }
 
 exports.removeFromGroup = function(req, res){
