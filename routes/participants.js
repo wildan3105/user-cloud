@@ -33,8 +33,11 @@ router.use(session({
   })
 );
 
-// set header
+// specific parsing
+var jsonParser = bodyParser.json()
 
+// create application/x-www-form-urlencoded parser
+var urlEncodedParser = bodyParser.urlencoded({extended: false})
 
 // middleware to use in all routes
 router.use(function(req, res, next){
@@ -122,5 +125,11 @@ router.get('/owncloud/groups/:group', owncloud.getGroupMember)
 
 router.get('/owncloud/test', owncloud.Test)
 router.post('/owncloud/users', owncloud.addUser)
+
+// testing routes
+router.post('/test', urlEncodedParser, function(req, res){
+  if (!req.body) return res.sendStatus(404)
+  res.send('welcome, ' + req.body.username)
+})
 
 module.exports = router;

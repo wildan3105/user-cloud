@@ -16,6 +16,7 @@ app.use(cookieParser());
 var jsonParser = bodyParser.json()
 
 // create application/x-www-form-urlencoded parser
+var urlEncodedParser = bodyParser.urlencoded({extended: false})
 
 var credentials = require('../credentials/auth.json')
 
