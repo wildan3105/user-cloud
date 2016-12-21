@@ -12,7 +12,11 @@ app.use(cookieParser());
 var router              = express.Router()
 
 router.get('/', function(req, res){
-  res.send('welcome to administrator page')
+  res.render('admin/main', {title:"Main Page Administrator"})
+})
+
+router.get('/login', function(req, res){
+  res.render('admin/login', {title:"Login Admin"})
 })
 
 module.exports = router;
