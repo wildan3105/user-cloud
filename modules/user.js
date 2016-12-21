@@ -14,7 +14,14 @@ exports.loginAdmin = function(req,res){
   var pass = req.body.password
   if(user === 'wildan' && pass === 'wildan123'){
     req.session.user = user;
-    res.send('logged in')
+    res.format({
+      json: function(){
+        res.send({message: 'Logged in'})
+      },
+      html: function(){
+        res.redirect('../../admin/home')
+      }
+    })
   } else if (user !== 'wildan' && pass == 'wildan123') {
     console.log('wrong username')
     res.send('wrong username')
@@ -33,7 +40,14 @@ exports.loginAdmin = function(req,res){
 exports.logoutAdmin = function(req,res){
   delete req.session.user;
   console.log('logged out successfully')
-  res.send('logged out');
+  res.format({
+    json: function(){
+      res.send({message:"Logged out"})
+    },
+    html: function(){
+      res.redirect('../../admin')
+    }
+  })
 }
 
 exports.createUser = function(req,res){

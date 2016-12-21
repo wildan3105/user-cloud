@@ -19,4 +19,9 @@ router.get('/login', function(req, res){
   res.render('admin/login', {title:"Login Admin"})
 })
 
+router.get('/home', function(req, res){
+  // check if session okay
+  res.render('admin/home', {title:"Dashboard admin"})
+})
+
 module.exports = router;
