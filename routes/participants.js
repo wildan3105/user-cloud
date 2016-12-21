@@ -123,6 +123,7 @@ router.delete('/owncloud/groups/:group', owncloud.deleteGroup)
 router.post('/owncloud/users/:user/groups', owncloud.addUserToGroup)
 router.get('/owncloud/users/:user/subadmins', owncloud.getSubadmin)
 router.get('/owncloud/groups', owncloud.getAllGroups)
+router.post('/owncloud/groups', owncloud.addGroup)
 router.get('/owncloud/groups/:group', owncloud.getGroupMember)
 router.get('/owncloud/test', owncloud.Test)
 

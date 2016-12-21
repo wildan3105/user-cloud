@@ -22,7 +22,7 @@
 		[] users/edituser							{PUT}
 		[-] users/deleteuser					{DELETE}
 		[-] users/getgroups						{GET}
-		[] users/addtogroup						{POST}
+		[-] users/addtogroup					{POST}
 		[] users/removefromgroup			{DELETE}
 		[] users/createsubadmin				{POST}
 		[] users/removesubadmin				{DELETE}

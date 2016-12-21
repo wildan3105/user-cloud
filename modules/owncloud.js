@@ -111,3 +111,9 @@ exports.addUserToGroup = function(req, res){
   if (!req.body) return res.sendStatus(404)
   res.redirect(307, fullUrl+'?groupid='+req.body.groupid)
 }
+
+exports.addGroup = function(req, res){
+  let fullUrl = full+'groups'
+  if (!req.body) return res.sendStatus(404)
+  res.redirect(307, fullUrl+'?groupid='+req.body.groupid)
+}
