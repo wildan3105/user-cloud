@@ -23,7 +23,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(methodOverride('_method'));
-app.use('/static', express.static(path.join(__dirname, 'views/static')))
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade')
 app.use('/api', participants);
