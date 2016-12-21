@@ -12,6 +12,7 @@ var helmet							= require('helmet');
 var Participant    			= require('./models/participant');
 var participants   			= require('./routes/participants');
 var main								= require('./routes/main');
+var admin								= require('./routes/admin');
 
 mongoose.connect('mongodb://127.0.0.1:27017/usercloud');
 
@@ -23,6 +24,7 @@ app.use(methodOverride('_method'));
 app.set('views', './views');
 app.use('/api', participants);
 app.use('/', main);
+app.use('/admin', admin);
 
 app.listen(port);
 console.log('Server running at ', port);
