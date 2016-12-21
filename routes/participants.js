@@ -117,14 +117,14 @@ router.get('/owncloud/users', owncloud.getAllUsers)
 router.get('/owncloud/users/:user', owncloud.getSingleUser)
 router.delete('/owncloud/users/:user', owncloud.deleteUser)
 router.get('/owncloud/users/:user/groups', owncloud.getGroup)
+router.post('/owncloud/users', owncloud.addUser)
 //router.delete('/owncloud/users/:user/groups', owncloud.deleteFromGroup)
 router.delete('/owncloud/groups/:group', owncloud.deleteGroup)
 router.get('/owncloud/users/:user/subadmins', owncloud.getSubadmin)
 router.get('/owncloud/groups', owncloud.getAllGroups)
 router.get('/owncloud/groups/:group', owncloud.getGroupMember)
-
 router.get('/owncloud/test', owncloud.Test)
-router.post('/owncloud/users', owncloud.addUser)
+
 
 // testing routes
 router.post('/test', urlEncodedParser, function(req, res){
