@@ -104,3 +104,10 @@ exports.addUser = function(req,res){
   if (!req.body) return res.sendStatus(404)
   res.redirect(307, fullUrl+'?userid='+req.body.userid+'&password='+req.body.password)
 }
+
+exports.addUserToGroup = function(req, res){
+  let params  = req.params.user
+  let fullUrl = full+'users/'+params+'/groups'
+  if (!req.body) return res.sendStatus(404)
+  res.redirect(307, fullUrl+'?groupid='+req.body.groupid)
+}

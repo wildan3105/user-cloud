@@ -16,7 +16,7 @@
 
 - OWNCLOUD list api
 	# user
-		[] users/adduser							{POST}
+		[-] users/adduser							{POST}
 		[-] users/getusers (multiple)	{GET}
 		[-] users/getuser (single)		{GET}
 		[] users/edituser							{PUT}
