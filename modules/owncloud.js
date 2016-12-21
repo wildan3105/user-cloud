@@ -100,12 +100,7 @@ exports.getGroupMember = function(req,res){
 }
 
 exports.addUser = function(req,res){
-  let userid    = req.body.userid
-  let password  = req.body.password
-  var fullUrl   = full+'users'
+  let fullUrl   = full+'users'
   if (!req.body) return res.sendStatus(404)
-  request(fullUrl, req.body, function(err, remoteResponse, remoteBody) {
-    if (err) { return res.status(500).end('Error');}
-    res.end(remoteBody);
-  });
+  res.redirect(307, fullUrl+'?userid='+req.body.userid+'&password='+req.body.password)
 }
