@@ -55,16 +55,6 @@ exports.deleteUser = function(req, res){
   res.redirect(fullUrl)
 }
 
-exports.deleteFromGroup = function(req, res){
-  let params1 = req.params.user
-  let params2 = req.body.groupid
-  /*
-    not working, specify groupid into req.body then request({})
-  */
-  let fullUrl = full+'users/'+params1+'/groups'
-  res.redirect(fullUrl)
-}
-
 exports.getGroup = function(req,res){
   let params = req.params.user
   let fullUrl = full+'users/'+params+'/groups'

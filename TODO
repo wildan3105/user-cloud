@@ -23,9 +23,7 @@
 		[-] users/deleteuser					{DELETE}
 		[-] users/getgroups						{GET}
 		[-] users/addtogroup					{POST}
-		[] users/removefromgroup			{DELETE}
-		[] users/createsubadmin				{POST}
-		[] users/removesubadmin				{DELETE}
+		[-] users/removefromgroup			{DELETE}
 		[-] users/getsubadmingroups		{GET}
 
 	# group
