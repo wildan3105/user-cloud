@@ -19,7 +19,7 @@
 		[-] users/adduser							{POST}
 		[-] users/getusers (multiple)	{GET}
 		[-] users/getuser (single)		{GET}
-		[] users/edituser							{PUT}
+		[-] users/edituser						{PUT}
 		[-] users/deleteuser					{DELETE}
 		[-] users/getgroups						{GET}
 		[-] users/addtogroup					{POST}

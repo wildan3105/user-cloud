@@ -126,3 +126,9 @@ exports.updateUser = function(req, res){
   let fullUrl = full+'users/'+params
   res.redirect(307, fullUrl+'?key='+req.body.key+'&value='+req.body.new_email)
 }
+
+exports.removeFromGroup = function(req, res){
+  let params  = req.params.user
+  let fullUrl = full+'users/'+params+'/groups'
+  res.redirect(307, fullUrl+'?groupid='+req.body.groupid)
+}
