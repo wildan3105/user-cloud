@@ -12,13 +12,19 @@ app.use(cookieParser());
 var router              = express.Router()
 
 // middleware auth
-var user                = require('../modules/user')
-var participants   			= require('./participants')
+router.use(session({
+  secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
+  proxy: true,
+  resave: true,
+  saveUninitialized: true,
+  store: new MongoStore({ url: 'mongodb://localhost:27017/usercloud'})
+  })
+);
 
 function isLoggedIn(req,res,next){
     if(!req.session.user){
       console.log('unauthorized access!')
-      res.send('unauthorized access!')
+      res.send('unauthorized access! please login first')
     } else {
       next();
     }
@@ -32,8 +38,7 @@ router.get('/login', function(req, res){
   res.render('admin/login', {title:"Login Admin"})
 })
 
-router.get('/home', function(req, res){
-  // check if session okay
+router.get('/home', isLoggedIn, function(req, res){
   res.render('admin/home', {title:"Dashboard admin"})
 })
 
