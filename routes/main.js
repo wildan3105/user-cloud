@@ -12,11 +12,11 @@ app.use(cookieParser());
 var router              = express.Router()
 
 router.get('/', function(req, res){
-  res.send('welcome to main page')
+  res.render('user/main', {title:"Main page"})
 })
 
 router.get('/register', function(req, res){
-  res.render('user/register');
+  res.render('user/register', {title: "Registration page"})
 })
 
 module.exports = router;
