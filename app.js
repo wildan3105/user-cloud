@@ -26,7 +26,7 @@ app.use(methodOverride('_method'));
 app.use('/static', express.static(path.join(__dirname, 'views/static')))
 app.engine('html', cons.swig)
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html')
+app.set('view engine', 'pug')
 app.use('/api', participants);
 app.use('/', main);
 app.use('/admin', admin);
