@@ -48,7 +48,11 @@ router.get('/login', function(req, res){
   res.render('admin/login', {title:"Login Admin"})
 })
 
+router.post('/login', user.loginAdmin)
+router.post('/logout', user.logoutAdmin)
+
 router.use(isLoggedIn)
+
 router.get('/home', function(req, res){
   res.render('admin/home', {title:"Dashboard admin"})
 })
