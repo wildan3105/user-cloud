@@ -121,6 +121,6 @@ router.get('/owncloud/groups', owncloud.getAllGroups)
 router.get('/owncloud/groups/:group', owncloud.getGroupMember)
 
 router.get('/owncloud/test', owncloud.Test)
-// router.use('/owncloud/users', owncloud.addUser), still buggy
+router.post('/owncloud/users', owncloud.addUser)
 
 module.exports = router;

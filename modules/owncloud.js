@@ -8,9 +8,14 @@ var express           = require('express'),
 var cookieParser        = require('cookie-parser');
 var bodyParser          = require('body-parser')
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+
+// specific parsing
+var jsonParser = bodyParser.json()
+
+// create application/x-www-form-urlencoded parser
 
 var credentials = require('../credentials/auth.json')
 
@@ -97,14 +102,4 @@ exports.addUser = function(req,res){
   let userid    = req.body.userid
   let password  = req.body.password
   let fullUrl   = full+'users'
-  let formData = {
-    userid: userid,
-    password: password
-  }
-  request.post({url: fullUrl, formData:formData}, function(err, response, body){
-    if(!err && response.statusCode == 200){
-      res.redirect(fullUrl)
-    }
-    res.send(err)
-  })
 }
