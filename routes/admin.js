@@ -11,6 +11,19 @@ app.use(cookieParser());
 
 var router              = express.Router()
 
+// middleware auth
+var user                = require('../modules/user')
+var participants   			= require('./participants')
+
+function isLoggedIn(req,res,next){
+    if(!req.session.user){
+      console.log('unauthorized access!')
+      res.send('unauthorized access!')
+    } else {
+      next();
+    }
+  }
+
 router.get('/', function(req, res){
   res.render('admin/main', {title:"Main Page Administrator"})
 })

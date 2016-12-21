@@ -102,12 +102,12 @@ router.get('/', function(req,res, next){
 router.post('/login', user.loginAdmin)
 router.post('/logout', user.logoutAdmin)
 
+router.post('/participant', user.createUser)
+
 // check session for all routes below
 router.use(isLoggedIn)
 
 router.get('/participants', user.findAll)
-
-router.post('/participant', user.createUser)
 router.get('/participant/:email', user.findUserByEmail)
 router.delete('/participant/:email', user.deleteUserByEmail)
 router.put('/participant/:email', user.updateUserByEmail)
