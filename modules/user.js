@@ -111,9 +111,16 @@ exports.findUserByEmail = function(req,res){
 }
 
 exports.findAll = function(req,res){
-  Participant.find({}, function(e,s){
-    if(s){
-      res.send(s)
+  Participant.find({}, function(e,users){
+    if(users){
+      res.format({
+        json: function(){
+          res.send(users)
+        },
+        html: function(){
+          res.render('admin/list', {title:"List users", users:users})
+        }
+      })
     } else {
       res.send('none')
     }

@@ -11,6 +11,9 @@ app.use(cookieParser());
 
 var router              = express.Router()
 
+// outer module
+var user                = require('../modules/user')
+
 // middleware auth
 router.use(session({
   secret: 'faeb4453e5d14fe6f6d04637f78077c76c73d1b4',
@@ -24,7 +27,14 @@ router.use(session({
 function isLoggedIn(req,res,next){
     if(!req.session.user){
       console.log('unauthorized access!')
-      res.send('unauthorized access! please login first')
+      res.format({
+        json: function(){
+          res.send({message:" unauthorized access! please login first"})
+        },
+        html: function(){
+          res.redirect('../admin')
+        }
+      })
     } else {
       next();
     }
@@ -38,8 +48,11 @@ router.get('/login', function(req, res){
   res.render('admin/login', {title:"Login Admin"})
 })
 
-router.get('/home', isLoggedIn, function(req, res){
+router.use(isLoggedIn)
+router.get('/home', function(req, res){
   res.render('admin/home', {title:"Dashboard admin"})
 })
+
+router.get('/list', user.findAll)
 
 module.exports = router;
