@@ -13,8 +13,8 @@ var Participant    			= require('./models/participant');
 var participants   			= require('./routes/participants');
 var main								= require('./routes/main');
 var admin								= require('./routes/admin');
-var cons								= require('consolidate');
 var path								= require('path')
+var jade								= require('jade')
 
 mongoose.connect('mongodb://127.0.0.1:27017/usercloud');
 
@@ -24,9 +24,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(methodOverride('_method'));
 app.use('/static', express.static(path.join(__dirname, 'views/static')))
-app.engine('html', cons.swig)
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug')
+app.set('view engine', 'jade')
 app.use('/api', participants);
 app.use('/', main);
 app.use('/admin', admin);

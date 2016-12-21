@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 var router              = express.Router()
+var user                = require('../modules/user')
 
 router.get('/', function(req, res){
   res.render('user/main', {title:"Main page"})
@@ -18,5 +19,7 @@ router.get('/', function(req, res){
 router.get('/register', function(req, res){
   res.render('user/register', {title: "Registration page"})
 })
+
+router.post('/register', user.createUser)
 
 module.exports = router;
