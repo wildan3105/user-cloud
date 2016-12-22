@@ -81,8 +81,9 @@ exports.logoutAdmin = function(req,res){
 
 exports.createUser = function(req,res){
   var user = new Participant()
-  user.email    = req.body.email
-  user.password = req.body.password
+  user.email      = req.body.email
+  user.password   = req.body.password
+  user.registered = new Date()
   Participant.findOne({email: user.email}, function(err, exist){
     if(exist){
       console.log('email exist!')
@@ -97,7 +98,14 @@ exports.createUser = function(req,res){
           res.send(err)
         }
         else {
-          res.redirect('../../')
+          res.format({
+            html: function(){
+              res.send('User created')
+            },
+            json: function(){
+              res.send({message:"User created"})
+            }
+          })
         }
       })
     }
