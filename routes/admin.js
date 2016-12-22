@@ -59,4 +59,8 @@ router.get('/home', function(req, res){
 
 router.get('/list', user.findAll)
 
+router.get('/profile', function(req, res){
+  res.render('admin/profile', {title:"Admin profile"})
+})
+
 module.exports = router;

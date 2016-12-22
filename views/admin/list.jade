@@ -1,11 +1,28 @@
-head
-  title=title
+include ../static/layout
 
 body
-  h2 List users
-  p
-    each user in users
-      li=user.email
-  
-  a(href="./home") Back to Dashboard
+  div(class='container')
+    div(class='row')
+      div(class='col-md-10')
+      h3 List of all participants
+      p
+      form(method='post', action='#')
+        table(class='table table-striped')
+          tr
+          th Email
+          th Password
+          th Delete
+          th Activate
+          th Registered at
+          each user in users
+            tr
+              td=user.email
+              td=user.password
+              td
+                input(type='submit' class='btn btn-warning', name='delete', value='Delete')
+              td
+                input(type='submit' class='btn btn-success' name='activate' value='Activate')
+              td Registered
+      a(href="./home") Back to Dashboard        
+    
   
