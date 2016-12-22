@@ -4,9 +4,9 @@ body
   h3 Register here
   form(action='register', method='post')
     label Email
-    input(type='email', name='email')
+    input(type='email', name='email', required)
     br
     label Password
-    input(type='password', name='password')
+    input(type='password', name='password', required)
     br
     input(type='submit', value='register')
