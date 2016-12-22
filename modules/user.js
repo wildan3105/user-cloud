@@ -10,6 +10,8 @@ app.use(cookieParser());
 var Participant     = require('../models/participant')
 
 exports.loginAdmin = function(req,res){
+  var alert;
+  var error;
   var user = req.body.username;
   var pass = req.body.password
   if(user === 'wildan' && pass === 'wildan123'){
@@ -24,13 +26,40 @@ exports.loginAdmin = function(req,res){
     })
   } else if (user !== 'wildan' && pass == 'wildan123') {
     console.log('wrong username')
-    res.send('wrong username')
+    error = 'wrong username'
+    res.format({
+      json: function(){
+        res.send({message: 'Wrong username'})
+      },
+      html: function(){
+        alert = 0
+        res.redirect('#')
+      }
+    })
   } else if (user === 'wildan' && pass !== 'wildan123') {
+    alert = -1
+    error = 'wrong password'
     console.log('wrong password')
-    res.send('wrong password')
+    res.format({
+      json: function(){
+        res.send({message: 'Wrong password'})
+      },
+      html: function(){
+        res.redirect('#')
+      }
+    })
   } else if (user !== 'wildan' && pass !== 'wildan123') {
+    alert = -2
+    error = 'wrong username and password'
     console.log('wrong username and password')
-    res.send('wrong username and password')
+    res.format({
+      json: function(){
+        res.send({message: 'Wrong username and password'})
+      },
+      html: function(){
+        res.redirect('#')
+      }
+    })
   } else {
     console.log('please try again')
     res.send('please try again')

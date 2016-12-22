@@ -1,6 +1,12 @@
 include ../static/layout
 head
   link(rel='stylesheet', href='/static/css/login.css')
+  script(type='text/javascript')
+    if("#{alert}" == 0) 
+      | {alert("#{error}")}
+    else if ("#{alert}" == -1)
+      | {alert("#{error}")}
+    
 
 body
   div(class='container')
