@@ -13,6 +13,7 @@ var router              = express.Router()
 
 // outer module
 var user                = require('../modules/user')
+var owncloud            = require('../modules/owncloud')
 
 // middleware auth
 router.use(session({
@@ -62,5 +63,7 @@ router.get('/list', user.findAll)
 router.get('/profile', function(req, res){
   res.render('admin/profile', {title:"Admin profile"})
 })
+
+router.get('/owncloud', owncloud.getAllUsers)
 
 module.exports = router;
