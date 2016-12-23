@@ -7,6 +7,7 @@ var express           = require('express'),
     MongoStore        = require('connect-mongo')(session);
 var cookieParser        = require('cookie-parser');
 var bodyParser          = require('body-parser')
+//var parser              = require('xml2json');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -40,9 +41,14 @@ exports.Test = function(req,res){
 
 exports.getAllUsers = function(req,res){
   let fullUrl = full+'users'
-  var data = res.redirect(fullUrl)
-  console.log(data)
-  res.redirect(fullUrl)
+  request.get(fullUrl, function(err, response, body){
+    if(!err & response.statusCode == 200){
+      // parse to json
+      // var data = JSON.parse(body)
+      var data = body;
+      res.send(body);
+    }
+  })
 }
 
 exports.getSingleUser = function(req,res){
