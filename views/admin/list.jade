@@ -12,23 +12,23 @@ body
           tr
           th Email
           th Password
+          th Registered at
+          th Status
           th Edit
           th Delete
           th Activate
-          th Registered at
-          th Status
           each user in users
             tr
               td=user.email
               td=user.password
+              td=user.registered
+              td None/Activated
               td
                 a(href='./list/#{user.email}', class='btn btn-primary', name='edit', value='Edit') Edit
               td
                 a(href='./list/#{user.email}/delete', class='btn btn-danger', name='delete', value='Delete') Delete
               td
                 input(type='submit' class='btn btn-success' name='activate' value='Activate')
-              td=user.registered
-              td None/Activated
       a(href="./home") Back to Dashboard        
     
   
