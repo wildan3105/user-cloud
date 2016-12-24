@@ -11,6 +11,7 @@ body
           tr
           th Email
           th Password
+          th Edit
           th Delete
           th Activate
           th Registered at
@@ -19,6 +20,8 @@ body
             tr
               td=user.email
               td=user.password
+              td
+                a(href='./list/#{user.email}', class='btn btn-primary', name='edit', value='Edit') Edit
               td
                 input(type='submit' class='btn btn-warning', name='delete', value='Delete')
               td

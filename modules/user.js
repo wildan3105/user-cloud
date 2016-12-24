@@ -138,9 +138,16 @@ exports.updateUserByEmail = function(req,res){
 
 exports.findUserByEmail = function(req,res){
   var params = req.params.email;
-  Participant.findOne({email: params}, function(e,s){
-    if(s){
-      res.send(s)
+  Participant.findOne({email: params}, function(e,user){
+    if(user){
+      res.format({
+        json: function(){
+          res.send(user)
+        },
+        html: function(){
+          res.render('admin/detail', {title: "User detail", user:user})
+        }
+      })
     } else {
       res.sendStatus(404)
     }

@@ -12,7 +12,7 @@ app.use(cookieParser());
 var router              = express.Router()
 
 // outer module
-var user                = require('../modules/user')
+var user             = require('../modules/user')
 var admin            = require('../modules/admin')
 
 // middleware auth
@@ -58,12 +58,14 @@ router.get('/home', function(req, res){
   res.render('admin/home', {title:"Dashboard admin"})
 })
 
-router.get('/list', user.findAll)
-
 router.get('/profile', function(req, res){
   res.render('admin/profile', {title:"Admin profile"})
 })
 
 router.get('/owncloud', admin.getAllUsers)
+
+router.get('/list', user.findAll)
+
+router.get('/list/:email', user.findUserByEmail)
 
 module.exports = router;

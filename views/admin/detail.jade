@@ -1,0 +1,12 @@
+include ../static/layout
+
+body
+  div(class='container')
+    div(class='row')
+      div(class='col-md-10')
+        h3 User detail
+        ul(style='list-style:none')
+          li Email : #{user.email}
+          li Password : #{user.password}
+          li Terdaftar pada : #{user.registered}
+        a(href="../list") Back to list
