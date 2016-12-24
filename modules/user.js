@@ -162,7 +162,8 @@ exports.findAll = function(req,res){
           res.send(users)
         },
         html: function(){
-          res.render('admin/list', {title:"List users", users:users})
+          let n = users.length;
+          res.render('admin/list', {title:"List users", users:users, n:n})
         }
       })
     } else {
