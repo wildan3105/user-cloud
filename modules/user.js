@@ -125,10 +125,10 @@ exports.updateUserByEmail = function(req,res){
         }
         res.format({
           json: function(){
-            res.send({message: 'Participant updated! New email : ' + user.email})
+            res.send({message:"User updated"})
           },
           html: function(){
-            res.send('updated')
+            res.redirect('../../list')
           }
         })
       })

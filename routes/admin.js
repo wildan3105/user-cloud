@@ -70,4 +70,6 @@ router.get('/list/:email', user.findUserByEmail)
 
 router.get('/list/:email/delete', user.deleteUserByEmail)
 
+router.post('/list/:email/update', user.updateUserByEmail)
+
 module.exports = router;
