@@ -155,7 +155,7 @@ exports.findUserByEmail = function(req,res){
 }
 
 exports.findAll = function(req,res){
-  Participant.find({}, function(e,users){
+  Participant.find({}, null, {sort: {registered: -1}}, function(e,users){
     if(users){
       res.format({
         json: function(){

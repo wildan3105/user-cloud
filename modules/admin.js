@@ -35,7 +35,7 @@ var full = preUrl+credents+endUrl;
 exports.getAllUsers = function(req,res){
   let fullUrl = full+'users'
   request.get(fullUrl, function(err, response, body){
-    if(!err & response.statusCode == 200){
+    if(!err){
       // parse to json
       parseString(body, function(err, result){
         console.log(JSON.stringify(result))
