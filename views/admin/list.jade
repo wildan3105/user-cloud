@@ -6,7 +6,7 @@ body
       div(class='col-md-10')
       h3 List of all participants
       p
-      form(method='post', action='#')
+      form(method='post')
         table(class='table table-striped')
           tr
           th Email
@@ -23,7 +23,7 @@ body
               td
                 a(href='./list/#{user.email}', class='btn btn-primary', name='edit', value='Edit') Edit
               td
-                input(type='submit' class='btn btn-warning', name='delete', value='Delete')
+                a(href='./list/#{user.email}/delete', class='btn btn-danger', name='delete', value='Delete') Delete
               td
                 input(type='submit' class='btn btn-success' name='activate' value='Activate')
               td=user.registered

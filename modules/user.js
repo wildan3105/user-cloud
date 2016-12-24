@@ -173,11 +173,15 @@ exports.findAll = function(req,res){
 
 exports.deleteUserByEmail = function(req,res){
   var params = req.params.email;
-  Participant.remove({email:params}, function(e,s){
-    if(s){
-      res.json({
-        "Status":"OK",
-        "Message":"Removed"
+  Participant.remove({email:params}, function(e,deleted){
+    if(deleted){
+      res.format({
+        json: function(){
+          res.send({message:"User deleted"})
+        },
+        html: function(){
+          res.redirect('../../list')
+        }
       })
     } else {
       res.send('error when removing')
