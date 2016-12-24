@@ -4,9 +4,21 @@ body
   div(class='container')
     div(class='row')
       div(class='col-md-10')
-        h3 User detail
-        ul(style='list-style:none')
-          li Email : #{user.email}
-          li Password : #{user.password}
-          li Terdaftar pada : #{user.registered}
-        a(href="../list") Back to list
+      h3 User detail
+      p
+      form(method='post', action='#')
+        div(class='row')
+          div(class='col-xs-2')
+            div(class='form-group')
+              label(for='email', id='email') Email
+              input(type='email', class='form-control', value='#{user.email}')
+            div(class='form-group')
+              label(for='password', id='password') Password
+              input(type='password', class='form-control', value='#{user.password}')
+            button(type='submit' class='btn btn-primary' value='Save') Save
+        br
+        div(class='form-group')
+          label(for='date', id='date') Terdaftar pada : #{user.registered}
+        
+        
+      a(href="../list") Back to list
