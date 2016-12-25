@@ -9,9 +9,11 @@ body
       form(method='post')
         table(class='table table-striped')
           tr
+          th No.
           th Email
-          each user in users
+          each account in accounts
             tr
-              td=user
+              th=account.index
+              td=account.username
         
     a(href='./home') Back to dashboard

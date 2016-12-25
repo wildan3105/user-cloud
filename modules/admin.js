@@ -40,9 +40,15 @@ exports.getAllUsers = function(req,res){
       var users;
       parseString(body, function(err, result){
         users = result.ocs.data[0].users[0].element;
-        //console.log(users.length)
       })
-      res.render('admin/owncloud', {title:"Owncloud Accounts", users:users})
+      var accounts = [];
+      for (var i=1; i<=users.length; i++){
+        accounts.push({
+          index: i,
+          username: users[i]
+        })
+      }
+      res.render('admin/owncloud', {title:"Owncloud Accounts", accounts:accounts})
     }
   })
 }
