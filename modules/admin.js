@@ -81,3 +81,13 @@ exports.getSingleUser = function(req,res){
     }
   })
 }
+
+exports.deleteUserByEmail = function(req,res){
+  let params  = req.params.user
+  let fullUrl = full+'users/'+params
+  request.get(fullUrl, function(err, response, body){
+    if(!err){
+      res.redirect('../../owncloud')
+    }
+  })
+}

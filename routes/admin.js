@@ -66,6 +66,8 @@ router.get('/owncloud', admin.getAllUsers)
 
 router.get('/owncloud/:user', admin.getSingleUser)
 
+router.get('/owncloud/:user/delete', admin.deleteUserByEmail)
+
 router.get('/list', user.findAll)
 
 router.get('/list/:email', user.findUserByEmail)
