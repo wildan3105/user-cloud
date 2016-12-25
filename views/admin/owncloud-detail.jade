@@ -1,0 +1,15 @@
+include ../static/layout
+
+body
+  div(class='container')
+    div(class='row')
+      div(class='col-md-10')
+      h3 Owncloud user detail
+      p Kuota
+      ul
+        li Free : #{free} GB
+        li Used : #{used} GB
+        li Total : #{total} GB
+      p Email : #{user.email}
+        
+      a(href="../owncloud") Back to list

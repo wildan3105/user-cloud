@@ -64,6 +64,8 @@ router.get('/profile', function(req, res){
 
 router.get('/owncloud', admin.getAllUsers)
 
+router.get('/owncloud/:user', admin.getSingleUser)
+
 router.get('/list', user.findAll)
 
 router.get('/list/:email', user.findUserByEmail)

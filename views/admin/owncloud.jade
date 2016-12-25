@@ -11,9 +11,12 @@ body
           tr
           th No.
           th Email
+          th Detail
           each account in accounts
             tr
-              th=account.index
+              td=account.index
               td=account.username
+              td
+                a(href='./owncloud/#{account.username}', class='btn btn-primary', name='detail', value='detail') Detail
         
     a(href='./home') Back to dashboard

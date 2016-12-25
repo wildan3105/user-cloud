@@ -52,3 +52,32 @@ exports.getAllUsers = function(req,res){
     }
   })
 }
+
+exports.getSingleUser = function(req,res){
+  let params  = req.params.user;
+  let fullUrl = full+'users/'+params
+  request.get(fullUrl, function(err, response, body){
+    if(!err){
+      var user, quota;
+      parseString(body, function(err, result){
+        user    = result.ocs.data[0]
+        quota  = result.ocs.data[0].quota[0]
+        console.log(user)
+      })
+      // hardcode, still
+      let free  = quota.free / 1024 / 1024 / 1024,
+          used  = quota.used / 1024 / 1024 / 1024,
+          total = quota.total / 1024 / 1024 / 1024;
+      free = free.toString(),
+      used = used.toString(),
+      total = total.toString(),
+      free = free.substring(0, 6),
+      used = used.substring(0, 6),
+      total = total.substring(0,6)
+      var details = [];
+      res.render('admin/owncloud-detail', {title:"Owncloud user detail",
+        free:free, used:used, total:total, user:user
+      })
+    }
+  })
+}
