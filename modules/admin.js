@@ -82,6 +82,12 @@ exports.getSingleUser = function(req,res){
   })
 }
 
+exports.addUser = function(req,res){
+  let fullUrl   = full+'users'
+  if (!req.body) return res.sendStatus(404)
+  res.redirect(307, fullUrl+'?userid='+req.body.userid+'&password='+req.body.password)
+}
+
 exports.deleteUserByEmail = function(req,res){
   let params  = req.params.user
   let fullUrl = full+'users/'+params
