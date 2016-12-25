@@ -12,11 +12,14 @@ body
           th No.
           th Email
           th Detail
+          th Delete
           each account in accounts
             tr
               td=account.index
               td=account.username
               td
                 a(href='./owncloud/#{account.username}', class='btn btn-primary', name='detail', value='detail') Detail
+              td
+                a(href='#' class='btn btn-danger' name='delete' value='delete') Delete
         
     a(href='./home') Back to dashboard
