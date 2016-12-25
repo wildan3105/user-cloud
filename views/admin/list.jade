@@ -10,6 +10,7 @@ body
       form(method='post')
         table(class='table table-striped')
           tr
+          th No.
           th Email
           th Password
           th Registered at
@@ -19,6 +20,7 @@ body
           th Activate
           each user in users
             tr
+              td=user.index
               td=user.email
               td=user.password
               td=user.registered

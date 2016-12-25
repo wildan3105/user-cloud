@@ -37,11 +37,12 @@ exports.getAllUsers = function(req,res){
   request.get(fullUrl, function(err, response, body){
     if(!err){
       // parse to json
+      var users;
       parseString(body, function(err, result){
-        console.log(JSON.stringify(result))
+        users = result.ocs.data[0].users[0].element;
+        //console.log(users.length)
       })
-      var data = body;
-      res.render('admin/owncloud', {title:"Owncloud Accounts", data:data})
+      res.render('admin/owncloud', {title:"Owncloud Accounts", users:users})
     }
   })
 }

@@ -5,13 +5,17 @@ body
     div(class='row')
       div(class='col-md-10')
         h2 Dashboard admin
-        ul
-          li
-            a(href='profile') Update profile
-          li
-            a(href='list') List of participants
-          li
-            a(href='owncloud') Owncloud accounts
-      
+        nav.navbar.navbar-light.bg-faded
+          ul.nav.navbar-nav
+            li.nav-item.active
+              a.nav-link(href='#')
+                | Home 
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='profile') Profile
+            li.nav-item
+              a.nav-link(href='list') Participants
+            li.nav-item
+              a.nav-link(href='owncloud') Owncloud
         form(action='logout' method='post')
           button(class='btn btn-primary', type='submit') Logout
