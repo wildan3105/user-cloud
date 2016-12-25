@@ -5,7 +5,8 @@ var Schema = mongoose.Schema
 var participantSchema = new Schema ({
   email: String,
   password: String,
-  registered: Date
+  registered: Date,
+  isActive: Boolean
 })
 
 module.exports = mongoose.model('Participant', participantSchema)

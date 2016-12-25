@@ -84,6 +84,7 @@ exports.createUser = function(req,res){
   user.email      = req.body.email
   user.password   = req.body.password
   user.registered = new Date()
+  user.isActive   = false
   Participant.findOne({email: user.email}, function(err, exist){
     if(exist){
       console.log('email exist!')

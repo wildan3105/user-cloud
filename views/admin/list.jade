@@ -14,7 +14,7 @@ body
           th Email
           th Password
           th Registered at
-          th Status
+          th Status Aktif
           th Edit
           th Delete
           th Activate
@@ -24,7 +24,7 @@ body
               td=user.email
               td=user.password
               td=user.registered
-              td None/Activated
+              td=user.isActive
               td
                 a(href='./list/#{user.email}', class='btn btn-primary', name='edit', value='Edit') Edit
               td
