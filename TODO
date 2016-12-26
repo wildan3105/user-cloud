@@ -16,11 +16,11 @@
 
 - OWNCLOUD list api
 	# user
-		[-] users/adduser							{POST}
-		[-] users/getusers (multiple)	{GET}
-		[-] users/getuser (single)		{GET}
+		[-] users/adduser							{POST}		[]
+		[-] users/getusers (multiple)	{GET}			[ok]
+		[-] users/getuser (single)		{GET}			[ok]
 		[-] users/edituser						{PUT}
-		[-] users/deleteuser					{DELETE}
+		[-] users/deleteuser					{DELETE}	[ok]
 		[-] users/getgroups						{GET}
 		[-] users/addtogroup					{POST}
 		[-] users/removefromgroup			{DELETE}
