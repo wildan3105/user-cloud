@@ -23,7 +23,7 @@ var credentials = require('../credentials/auth.json')
 
 // url
 var preUrl = 'http://';
-var endUrl = '@eureka.fi.itb.ac.id/simpan/ocs/v1.php/cloud/';
+var endUrl = '@localhost:8080/owncloud/ocs/v1.php/cloud/';
 
 // credentials
 var credentials = require('../credentials/auth.json');
