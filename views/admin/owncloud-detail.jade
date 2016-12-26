@@ -1,11 +1,28 @@
 include ../static/layout
-
-body
-  div(class='container')
-    div(class='row')
-      div(class='col-md-10')
-      h3 Owncloud user detail
-      p Kuota
+html
+  head
+    script(type='text/javascript', src='https://www.gstatic.com/charts/loader.js')
+    script(type='text/javascript').
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+      ['Category', 'Quota'],
+      ['Used',     #{used}],
+      ['Free',      #{free}]
+      ]);
+      var options = {
+      title: 'Disk Usage'
+      };
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      chart.draw(data, options);
+      }
+  body
+    div(class='container')
+      div(class='row')
+        div(class='col-md-10')
+        h3 Owncloud user detail
+        #piechart(style='width: 900px; height: 500px;')
       ul
         li Free : #{free} GB
         li Used : #{used} GB
