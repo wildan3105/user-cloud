@@ -50,16 +50,17 @@ router.get('/login', function(req, res){
 })
 
 router.post('/login', user.loginAdmin)
+router.get('/logout', user.logoutAdmin)
 router.post('/logout', user.logoutAdmin)
 
 router.use(isLoggedIn)
 
 router.get('/home', function(req, res){
-  res.render('admin/home', {title:"Dashboard admin"})
+  res.render('admin/n-home', {title:"Dashboard admin"})
 })
 
 router.get('/profile', function(req, res){
-  res.render('admin/profile', {title:"Admin profile"})
+  res.render('admin/n-profile', {title:"Admin profile"})
 })
 
 router.get('/owncloud', admin.getAllUsers)

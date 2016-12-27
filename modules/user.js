@@ -146,7 +146,7 @@ exports.findUserByEmail = function(req,res){
           res.send(user)
         },
         html: function(){
-          res.render('admin/detail', {title: "User detail", user:user})
+          res.render('admin/n-participant-detail', {title: "User detail", user:user})
         }
       })
     } else {
@@ -164,7 +164,7 @@ exports.findAll = function(req,res){
         },
         html: function(){
           let n = users.length;
-          res.render('admin/list', {title:"List users", users:users, n:n})
+          res.render('admin/n-participants', {title:"List users", users:users, n:n})
         }
       })
     } else {
