@@ -1,0 +1,113 @@
+doctype html
+html
+  head
+    title=title
+    // Bootstrap
+    link(href='/static/import/bootstrap/css/bootstrap.min.css', rel='stylesheet', media='screen')
+    link(href='/static/import/bootstrap/css/bootstrap-responsive.min.css', rel='stylesheet', media='screen')
+    link(href='/static/import/assets/styles.css', rel='stylesheet', media='screen')
+    link(href='/static/import/assets/DT_bootstrap.css', rel='stylesheet', media='screen')
+    //if lte IE 8
+      script(language='javascript', type='text/javascript', src='/static/import/vendors/flot/excanvas.min.js')
+    // HTML5 shim, for IE6-8 support of HTML5 elements
+    //if lt IE 9
+      script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+    script(src='/static/import/vendors/modernizr-2.6.2-respond-1.1.0.min.js')
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href='#') Admin Panel userCloud
+          .nav-collapse.collapse
+            ul.nav.pull-right
+              li.dropdown
+                a.dropdown-toggle(href='#', role='button', data-toggle='dropdown')
+                  i.icon-user
+                  |  Admin 
+                  i.caret
+                ul.dropdown-menu
+                  li
+                    a(tabindex='-1', href='profile') Profile
+                  li.divider
+                  li
+                    a(tabindex='-1', href='logout') Logout
+            ul.nav
+              li.active
+                a(href='#') Owncloud accounts
+          // /.nav-collapse
+    .container-fluid
+      .row-fluid
+        #sidebar.span3
+          ul.nav.nav-list.bs-docs-sidenav.nav-collapse.collapse
+            li
+              a(href='home')
+                i.icon-chevron-right
+                |  Dashboard
+            li
+              a(href='profile')
+                i.icon-chevron-right
+                |  Profile
+            li
+              a(href='list')
+                i.icon-chevron-right
+                |  Participants
+            li.active
+              a(href='#')
+                i.icon-chevron-right
+                |  Ownclouds
+        // /span
+        #content.span9
+          .row-fluid
+            // block
+            .block
+              .navbar.navbar-inner.block-header
+                .muted.pull-left List of all participants
+              .block-content.collapse.in
+                .span12
+                  .table-toolbar
+                    //
+                      <div class="btn-group">
+                      <a href="#"><button class="btn btn-success">Add New <i class="icon-plus icon-white"></i></button></a>
+                      </div>
+                    legend Click user's email to see detail
+                    .btn-group.pull-right
+                      button.btn.dropdown-toggle(data-toggle='dropdown')
+                        | Tools 
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href='#') Print
+                        li
+                          a(href='#') Save as PDF
+                        li
+                          a(href='#') Export to Excel
+                    br
+                  table#example2.table.table-striped.table-bordered(cellpadding='0', cellspacing='0', border='0')
+                    thead
+                      tr
+                        th No.
+                        th Email
+                        th Delete
+                    tbody
+                      each account in accounts
+                        tr
+                          td=account.index
+                          td
+                            a(href='./owncloud/#{account.username}') #{account.username}
+                          td
+                            a(href='./owncloud/#{account.username}/delete' class='btn btn-danger' name='delete' value='delete') Delete
+                          
+      hr
+    // /.fluid-container
+    script(src='/static/import/vendors/jquery-1.9.1.js')
+    script(src='/static/import/bootstrap/js/bootstrap.min.js')
+    script(src='/static/import/vendors/datatables/js/jquery.dataTables.min.js')
+    script(src='/static/import/assets/scripts.js')
+    script(src='/static/import/assets/DT_bootstrap.js')
+    script.
+      $(function() {
+      });

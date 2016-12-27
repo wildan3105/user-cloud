@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title=title
+    title #{title} - #{user.email}
     // Bootstrap
     link(href='/static/import/bootstrap/css/bootstrap.min.css', rel='stylesheet', media='screen')
     link(href='/static/import/bootstrap/css/bootstrap-responsive.min.css', rel='stylesheet', media='screen')
@@ -30,10 +30,10 @@ html
                   i.caret
                 ul.dropdown-menu
                   li
-                    a(tabindex='-1', href='#') Profile
+                    a(tabindex='-1', href='../profile') Profile
                   li.divider
                   li
-                    a(tabindex='-1', href='login.html') Logout
+                    a(tabindex='-1', href='../logout') Logout
             ul.nav
               li.active
                 a(href='#') Participant detail
@@ -74,7 +74,7 @@ html
                   i.icon-chevron-right.show-sidebar(style='display:none;')
                     a(href='#', title='Show Sidebar', rel='tooltip')  
                   li
-                    a(href='participants.html') Participants
+                    a(href='../list') Participants
                     span.divider /
                   li.active
                     a(href='#') Detail

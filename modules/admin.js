@@ -48,7 +48,7 @@ exports.getAllUsers = function(req,res){
           username: users[i]
         })
       }
-      res.render('admin/owncloud', {title:"Owncloud Accounts", accounts:accounts})
+      res.render('admin/n-ownclouds', {title:"Owncloud Accounts", accounts:accounts})
     }
   })
 }
