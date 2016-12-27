@@ -85,7 +85,7 @@ html
                 .muted.pull-left Participant detail
               .block-content.collapse.in
                 .span12
-                  form.form-horizontal(method='post' action='#')
+                  form.form-horizontal(method='post' action='#{user.email}/update')
                     fieldset
                       legend Change some
                       .control-group
@@ -95,7 +95,7 @@ html
                       .control-group
                         label.control-label(for='focusedInput') Username
                         .controls
-                          input#focusedInput.input-xlarge.focused(type='text' value='#{user.email}')
+                          input#focusedInput.input-xlarge.focused(type='text' value='#{user.email}' name='email')
                       .form-actions
                         button.btn.btn-primary(type='submit') Save changes
                         &nbsp;
