@@ -75,7 +75,7 @@ exports.getSingleUser = function(req,res){
       used = used.substring(0, 6),
       total = total.substring(0,6)
       var details = [];
-      res.render('admin/owncloud-detail', {title:"Owncloud user detail",
+      res.render('admin/n-owncloud-detail', {title:"Owncloud user detail",
         free:free, used:used, total:total, user:user
       })
     }
