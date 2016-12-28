@@ -33,7 +33,7 @@ html
                     a(tabindex='-1', href='#') Profile
                   li.divider
                   li
-                    a(tabindex='-1', href='login.html') Logout
+                    a(tabindex='-1', href='../logout') Logout
             ul.nav
               li.active
                 a(href='#') Owncloud detail
@@ -74,7 +74,7 @@ html
                   i.icon-chevron-right.show-sidebar(style='display:none;')
                     a(href='#', title='Show Sidebar', rel='tooltip')  
                   li
-                    a(href='participants.html') Ownclouds
+                    a(href='../owncloud') Ownclouds
                     span.divider /
                   li.active
                     a(href='#') Detail
@@ -95,7 +95,7 @@ html
                       .control-group
                         label.control-label(for='focusedInput') Username
                         .controls
-                          input#focusedInput.input-xlarge.focused(type='text')
+                          input#focusedInput.input-xlarge.focused(type='text' value='#{user.email}')
                       .control-group
                         label.control-label(for='focusedInput') Password
                         .controls
